@@ -1,0 +1,26 @@
+<%- include('includes/head.ejs') %>
+<body>
+  <%- include('includes/navigation.ejs') %>
+  <main>
+    <h2>Login</h2>
+    <form class="user-form" action="/login" method="POST">
+      <% if (message) { %>
+        <div><%= message %></div>
+        <% } %>
+      <div class="user-form__control">
+        <label for="email">Email: </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Your email..."
+          required
+        />
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <button class="user-form__btn" type="submit">Login</button>
+    </form>
+  </main>
+  <%- include('includes/end.ejs') %>
+</body>

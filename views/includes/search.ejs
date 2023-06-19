@@ -1,0 +1,18 @@
+<div class="main-search">
+    <form class="main-search__form" action="/search" method="GET">
+      <label for="query_term">Search: </label>
+      <input
+        type="text"
+        id="query_term"
+        name="query_term"
+        placeholder="movie title..."
+      />
+      <label for="genre">Genre:</label>
+      <select id="genre" name="genre">
+        <% for (let genreItem of genres) { %>
+        <option value="<%= genreItem.genre %>"><%= genreItem.genre %></option>
+        <% } %>
+      </select>
+      <button class="main-search__btn" type="submit">Search</button>
+    </form>
+  </div>

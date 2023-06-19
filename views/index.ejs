@@ -1,0 +1,28 @@
+<%- include('includes/head.ejs') %>
+<body>
+  <%- include('includes/navigation.ejs') %>
+  <main>
+    <%- include('includes/search.ejs') %>
+    <h2>Movies</h2>
+    <div class="movies-grid">
+      <%for (let movie of movies) { %>
+      <div class="movies-card">
+        <a href="/movieId=<%=movie.id %>"
+          ><img
+            class="movies-card__img"
+            src="<%= movie.large_cover_image %>"
+            alt="<%= movie.title_english %>"
+        /></a>
+        <h3 class="movies-card__title"><%= movie.title_english %></h3>
+        <p class="movies-card__rating">
+          <% for (movieRate of moviesRatingData) { %> <% if (movieRate.movieId
+          === movie.id ) { %> Rating: <%=
+          Number(movieRate.averageRate).toFixed(1) %> from <%=
+          movieRate.totalVotes %> votes <% } %> <% } %>
+        </p>
+      </div>
+      <% } %>
+    </div>
+  </main>
+  <%- include('includes/end.ejs') %>
+</body>

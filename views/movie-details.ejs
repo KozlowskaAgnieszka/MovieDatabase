@@ -1,0 +1,80 @@
+<%- include('includes/head.ejs') %>
+<body>
+  <%- include('includes/navigation.ejs') %>
+  <main>
+    <%- include('includes/search.ejs') %>
+    <div class="movie-details">
+      <img
+        class="movie-details__img"
+        src="<%= movie.large_cover_image%>"
+        alt="<%= movie.title_english%>"
+      />
+      <div>
+        <h2 class="movie-details__title"><%= movie.title_long %></h2>
+        <% if (totalVotes > 0) {%>
+        <p class="movie-details__rating">Rating: <%= averageRating %> from <%= totalVotes %> votes</p>
+        <% } else { %>
+        <p class="movie-details__rating">No rates yet!</p>
+        <% } %> <% if (isAuthenticated) { %>
+        <div>
+          <form action="/movieId=<%= movie.id %>" method="POST">
+            <label for="rating">Rate this film:</label>
+            <input
+              type="radio"
+              class="movie-details__radio-btn"
+              id="1"
+              name="rating"
+              value="1"
+            />
+            <label for="1">1</label>
+
+            <input
+              type="radio"
+              class="movie-details__radio-btn"
+              id="2"
+              name="rating"
+              value="2"
+            />
+            <label for="2">2</label>
+
+            <input
+              type="radio"
+              class="movie-details__radio-btn"
+              id="3"
+              name="rating"
+              value="3"
+              checked
+            />
+            <label for="3">3</label>
+
+            <input
+              type="radio"
+              class="movie-details__radio-btn"
+              id="4"
+              name="rating"
+              value="4"
+            />
+            <label for="4">4</label>
+
+            <input
+              type="radio"
+              class="movie-details__radio-btn"
+              id="5"
+              name="rating"
+              value="5"
+            />
+            <label for="5">5</label>
+
+            <button class="movie-details__rate-btn" type="submit">Rate</button>
+          </form>
+          <% if (message) { %>
+          <div class="movie-details__message"><%= message %></div>
+          <% } %>
+        </div>
+        <% } %>
+        <p class="movie-details__description"><%= movie.description_full %></p>
+      </div>
+    </div>
+  </main>
+  <%- include('includes/end.ejs') %>
+</body>
